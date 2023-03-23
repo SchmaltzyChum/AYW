@@ -26,6 +26,8 @@ Maybe you need to also install the clr package: pip install clr
 
 Note that some dependencies, such as Python itself or the Kivy's dependencies (e.g. Cython), may need to be installed separately. You can find more information in the Kivy documentation.
 
+(The arcitecture is illustrated in the .pdf file.)
+
 ## Running the App
 
 To run the app, navigate to the directory where the `App.py` file is located and run the following command:
