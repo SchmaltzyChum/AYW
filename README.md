@@ -1,10 +1,10 @@
 # Pythonic App Example
 
-This is a simple Pythonic App Example that demonstrates how to use Kivy, Pandas, and Plotly to create a simple user interface and plot some data.
+This is a simple Python project that demonstrates how to create an android, IOS or Web application using python to annotate candlestick graphs with news events so that users can understand the market events and more easily research stocks.
 
 ## Installation of Packages
 
-To run this app, you need to install the following packages:
+To run the app you need to install the following packages:
 
 - kivy
 - pandas
@@ -28,4 +28,8 @@ python pythonic_app_example.py
 This will launch the app. You can interact with the UI and plot some data.
 
 That's it! If you have any questions or issues, please feel free to contact me.
+
+## Annotation
+
+The scripts main.py, stock_news.py and ___ preforms the fetching of SIX pricing data finds major stock events and fetches news regarging that stock that was released in conjunction with that market rise/fall. 
 
