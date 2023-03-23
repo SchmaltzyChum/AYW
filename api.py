@@ -12,9 +12,6 @@ display(HTML("<style>.container { width:90% !important; }</style>"))
 
 
 class FinancialDataAPI:
-    """
-    Just the API from the DEMO Notebook
-    """
     def __init__(self):
         self.url = 'https://web.api.six-group.com/api/findata'
 
