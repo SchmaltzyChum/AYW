@@ -133,7 +133,7 @@ class StockPage(Screen):
         layout.add_widget(back_button)
 
         # Load stock data using Pandas
-        data = pd.read_csv('your_stock_data.csv')
+        data = pd.read_csv('example_stock_data.csv')
 
         # Create a candlestick chart using Plotly Express
         fig = go.Figure(data=[go.Candlestick(x=data['Date'],
