@@ -13,8 +13,6 @@ import http.client, urllib.parse
 from collections import OrderedDict
 
 from stock_indicators.indicators.common.quote import Quote
-from api import FinancialDataAPI
-from api import print_object_attributes
 from stock_indicators import indicators
 from stock_indicators import EndType
 from datetime import datetime, timedelta

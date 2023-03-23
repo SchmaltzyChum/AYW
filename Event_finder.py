@@ -7,7 +7,7 @@ More information: https://www.marketaux.com/documentation
 The free API version, which is limited to 100 request per day.
 """
 from stock_news import set_df, clean_df, get_articles_dataframe_related_to_peaks
-from api import  FinancialDataAPI
+from six_api import  FinancialDataAPI
 
 
 if __name__ == '__main__':
@@ -26,5 +26,6 @@ if __name__ == '__main__':
     #The token currently using the free API version, which is limited to 100 request per day
     df_peaks_and_trough = get_articles_dataframe_related_to_peaks(df, token="7PF9IeuR79wUE8rw2skJVsjJFErB6I1O093q7iWI")
 
-    #optional: show the data frame
+    #optional: show and save the data frame
+    df_peaks_and_trough.to_csv("df_peaks.csv")
     print(df_peaks_and_trough)
