@@ -8,6 +8,7 @@ from stock_indicators import indicators
 from stock_indicators import EndType
 from datetime import datetime, timedelta
 import pandas as pd
+import json
 
 #findata = FinancialDataAPI()
 
@@ -49,7 +50,7 @@ def get_quote(df):
         ]
     return quotes_list
 
-def get_stock_news(company_symbol, date, time_range=7):
+def get_stock_news(company_symbol, date, time_range=7, limit_of_articles=3):
     after_date = date - timedelta(days=time_range)
     date = date.strftime('%Y-%m-%d')
     after_date = after_date.strftime('%Y-%m-%d')
@@ -57,9 +58,9 @@ def get_stock_news(company_symbol, date, time_range=7):
     conn = http.client.HTTPSConnection('api.marketaux.com')
 
     params = urllib.parse.urlencode({
-        'api_token': 'YRUBKUItIoeVYu8hzhZz8W2pfZ2PZPtz2PFruNuI',
+        'api_token': 'hMrwMsRcY48HdSYN6a95fRjAPApWtEogIYEI4Evh',
         'symbols': company_symbol,
-        'limit': 3,
+        'limit': limit_of_articles,
         'published_after': after_date,
         'published_before': date,
         })
@@ -71,3 +72,4 @@ def get_stock_news(company_symbol, date, time_range=7):
 
     print(data.decode('utf-8'))
 
+    return json.loads(data.decode('utf-8'))
