@@ -8,7 +8,7 @@ Also necesseary: https://python.stockindicators.dev/guide/#historical-quotes
 To get news data related to the stock market:
 https://www.marketaux.com/documentation
 
-TODO: Check the get_peaks_and_trough function for the funcionality and correctness. Maybe try another company than VALOR_BC
+TODO: Check the get_peaks_and_trough function for the funcionality and correctness.
 """
 
 import http.client, urllib.parse
