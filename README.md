@@ -26,7 +26,9 @@ Maybe you need to also install the clr package: pip install clr
 
 Note that some dependencies, such as Python itself or the Kivy's dependencies (e.g. Cython), may need to be installed separately. You can find more information in the Kivy documentation.
 
-(The arcitecture is illustrated in the .pdf file.)
+## Architecture
+
+![Alt-Text](/POC_Architecture.png) 
 
 ## Running the App
 
