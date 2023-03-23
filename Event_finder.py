@@ -10,7 +10,6 @@ from stock_news import set_df, clean_df, get_articles_dataframe_related_to_peaks
 from api import  FinancialDataAPI
 
 
-
 if __name__ == '__main__':
 
     #Connect to the Financial Api to get Stock Data
