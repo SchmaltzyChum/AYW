@@ -15,7 +15,7 @@ You can install them using pip. Open a terminal and run the following command:
 
 pip install kivy pandas plotly kivy_garden
 
-To run the peack detecion you need to install stock_indicators:
+To run the peak detection you need to install stock_indicators:
 
 pip install stock_indicators
 
@@ -28,9 +28,9 @@ Note that some dependencies, such as Python itself or the Kivy's dependencies (e
 
 ## Running the App
 
-To run the app, navigate to the directory where the `pythonic_app_example.py` file is located and run the following command:
+To run the app, navigate to the directory where the `App.py` file is located and run the following command:
 
-python pythonic_app_example.py
+python App.py
 
 
 This will launch the app. You can interact with the UI and plot some data.
