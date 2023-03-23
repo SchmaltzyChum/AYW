@@ -1,3 +1,14 @@
+"""
+Implemented an event based stock time line.
+
+To detect Peaks and troughs:
+https://python.stockindicators.dev/indicators/ZigZag/
+https://python.stockindicators.dev/guide/#historical-quotes
+
+To get news data related to the stock market:
+https://www.marketaux.com/documentation
+"""
+
 import http.client, urllib.parse
 from collections import OrderedDict
 
@@ -10,17 +21,22 @@ from datetime import datetime, timedelta
 import pandas as pd
 import json
 
-#findata = FinancialDataAPI()
-
-def get_articels_dataframe_related_to_peaks(df):
-    zigzag = get_peaks_and_troughs(df, percent_changes=3)
+def get_articles_dataframe_related_to_peaks(df, token="", percent_changes=3):
+    """
+    Get articles where are peaks or trough were detected in the dataframe.
+    Create a Dataframe with the date of the peaks and the related news articles to this peak.
+    :param df: Dataframe. Must be a stock market related frame.
+    :param percent_changes:int In which range the stock price can move before get detected as a peak or trough
+    :return: Dataframe with date of peak, 3 articles title and 3 urls related to the peak.
+    """
+    zigzag = get_peaks_and_troughs(df, percent_changes=percent_changes)
     pointtype = []
     for point in zigzag:
         pointtype.append(point.point_type)
     df.insert(0, "point_type", pointtype)
     date_series = df.loc[df.loc[:, "point_type"].isin(["H", "L"]), "date"]
     df.set_index("date", inplace=True)
-    s = [get_stock_news('SIX', date=x) for x in date_series]
+    s = [get_stock_news('SIX', date=x, token=token) for x in date_series]
     title1 = []
     title2 = []
     title3 = []
@@ -69,10 +85,20 @@ def get_articels_dataframe_related_to_peaks(df):
     return pd.DataFrame(frame)
 
 def clean_df(df):
+    """
+    Drop empty rows
+    :param df: Dataframe
+    :return: Cleaned Dataframe
+    """
     df = df.dropna(subset=['open'])
     return df
 
 def set_df(obj):
+    """
+    Create a dataframe out of the financal data we get from the FinancalAPI of SIX.
+    :param obj:findata from FinancialAPI
+    :return: Data frame
+    """
     data = OrderedDict({
         'date': [],
         'open': [],
@@ -93,12 +119,23 @@ def set_df(obj):
     return df
 
 def get_peaks_and_troughs(df, percent_changes=3):
+    """
+    Detect the peaks and troughs of stock market graph. The dataframe must include following coloumns: date, open, high, low, close, volume.
+    :param df: Data frame of stock market graph.
+    :param percent_changes:int In which range the stock price can move before get detected as a peak or trough
+    :return: List of Peak/Trough Points. See more: https://python.stockindicators.dev/indicators/ZigZag/
+    """
     quotes = get_quote(df)
     results = indicators.get_zig_zag(quotes, EndType.CLOSE, percent_change=percent_changes)
 
     return results
 
 def get_quote(df):
+    """
+    Helper function to create Quotes from a stock market data frame to detect peaks and troughs later.
+    :param df: Data frame of stock market information
+    :return: The quote list
+    """
     quotes_list = [
         Quote(d, o, h, l, c, v)
         for d, o, h, l, c, v
@@ -106,7 +143,19 @@ def get_quote(df):
         ]
     return quotes_list
 
-def get_stock_news(company_symbol, date, time_range=7, limit_of_articles=3):
+def get_stock_news(company_symbol, date, time_range=7, limit_of_articles=3, token=""):
+    """
+    Get stock news of a specific company for this specific date in a given time_range.
+    Using the API of marketaux to get news related to stock market.
+    More Information: https://www.marketaux.com/documentation
+
+    :param company_symbol:str The company symbol.
+    :param date:str The date of the news
+    :param time_range:int Days.
+    :param limit_of_articles: How much articles should be showed.
+    :param token: The API token for the access to marketaux
+    :return: A dictonary of news articles for the given company for this date range. You find all parameters in the API Doc.
+    """
     after_date = date - timedelta(days=time_range)
     date = date.strftime('%Y-%m-%d')
     after_date = after_date.strftime('%Y-%m-%d')
@@ -114,7 +163,7 @@ def get_stock_news(company_symbol, date, time_range=7, limit_of_articles=3):
     conn = http.client.HTTPSConnection('api.marketaux.com')
 
     params = urllib.parse.urlencode({
-        'api_token': 'hMrwMsRcY48HdSYN6a95fRjAPApWtEogIYEI4Evh',
+        'api_token': token,
         'symbols': company_symbol,
         'limit': limit_of_articles,
         'published_after': after_date,
@@ -126,6 +175,6 @@ def get_stock_news(company_symbol, date, time_range=7, limit_of_articles=3):
     res = conn.getresponse()
     data = res.read()
 
-    print(data.decode('utf-8'))
+    #print(data.decode('utf-8'))
 
     return json.loads(data.decode('utf-8'))
