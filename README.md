@@ -15,6 +15,14 @@ You can install them using pip. Open a terminal and run the following command:
 
 pip install kivy pandas plotly kivy_garden
 
+To run the peack detecion you need to install stock_indicators:
+
+pip install stock_indicators
+
+Attention this packages also need the .NET6 version==6. You need to install it manually.
+Just following the instruction here: https://dotnet.microsoft.com/en-us/download/dotnet/7.0
+Maybe you need to also install the clr package: pip install clr
+
 
 Note that some dependencies, such as Python itself or the Kivy's dependencies (e.g. Cython), may need to be installed separately. You can find more information in the Kivy documentation.
 
