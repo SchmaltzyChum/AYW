@@ -29,7 +29,7 @@ Note that some dependencies, such as Python itself or the Kivy's dependencies (e
 
 ## Architecture
 
-![Alt-Text](/POC_Architecture.png) 
+![Alt-Text](/images/POC_Architecture.png) 
 
 ## Running the App
 
@@ -47,10 +47,10 @@ That's it! If you have any questions or issues, please feel free to contact me.
 If everything was installed correctly and the app was launched correctly, the output should look like this:
 
 ### Menu
-![Alt-Text](/example_menu.png) 
+![Alt-Text](/images/example_menu.png) 
 
 ### Stock graph with market events
-![Alt-Text](/example_stock_graph.png) 
+![Alt-Text](/images/example_stock_graph.png) 
 
 
 ## Annotation
