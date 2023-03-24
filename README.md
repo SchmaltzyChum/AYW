@@ -43,8 +43,4 @@ That's it! If you have any questions or issues, please feel free to contact me.
 
 ## Annotation
 
-The scripts main.py, stock_news.py and api.py preforms the fetching of SIX's pricing data finds major stock events and fetches news regarging that stock that was released in conjunction with that market rise/fall. 
-
-## Todo
-* Integrate the app and the news fetch.
-* Proper UI/UX development. 
+The scripts main.py, stock_news.py and api.py preforms the fetching of SIX's pricing data finds major stock events and fetches news regarging that stock that was released in conjunction with that market rise/fall.
