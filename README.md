@@ -42,6 +42,17 @@ This will launch the app. You can interact with the UI and plot some data.
 
 That's it! If you have any questions or issues, please feel free to contact me.
 
+## Example Output
+
+If everything was installed correctly and the app was launched correctly, the output should look like this:
+
+### Menu
+![Alt-Text](/example_menu.png) 
+
+### Stock graph with market events
+![Alt-Text](/example_stock_graph.png) 
+
+
 ## Annotation
 
 The scripts main.py, stock_news.py and api.py preforms the fetching of SIX's pricing data finds major stock events and fetches news regarging that stock that was released in conjunction with that market rise/fall.
