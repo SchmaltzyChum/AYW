@@ -1,7 +1,7 @@
 # Python App, annotate graphs with news.
 
 This is a simple Python project that demonstrates how to create an android, IOS or Web application using python to annotate candlestick graphs with news events so that users can understand the market events and more easily research stocks.
-The programm automatically detects peaks and troughs and adds on the graph relevant news articles to the peaks and troughs.
+The programm automatically detects peaks and troughs, fetch news articles related to the stocks peaks and troughs and add them on the graph.
 
 ## Installation of Packages
 
@@ -49,7 +49,7 @@ If everything was installed correctly and the app was launched correctly, the ou
 ### Menu
 ![Alt-Text](/images/example_menu.png) 
 
-### Stock graph with market events
+### Example stock graph with market events
 ![Alt-Text](/images/example_stock_graph.png) 
 
 
